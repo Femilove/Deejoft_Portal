@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Offered</title>
+  <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+  <!-- Menu Button (only visible on mobile) -->
+  <button class="menu-btn" id="menuBtn">☰</button>
+
+  <div class="parent">
+    <!-- Sidebar -->
+    <div class="sidebar div1"id="sidebar">
+      <button class="close-btn" id="closeBtn">✖</button>
+      <div>
+        <div class="logo">
+          <img src="../img/Frame 47.png" alt="Logo">
+        </div>
+        <nav>
+          <a href="Landing.html">🏠 Dashboard</a>
+          <a href="pay.html">💳 Payment Info</a>
+          <a href="Registration.html">📝 Registration</a>
+          <a href="courses.html" class="active">📚 Courses</a>
+          <a href="#">📉 Drop Semester</a>
+          <a href="#">📊 Result</a>
+          <a href="#">📢 Notice</a>
+          <a href="#">📅 Schedule</a>
+        </nav>
+      </div>
+      <a href="#" class="logout">🚪 Logout</a>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="courses-section">
+      <h2>📚 List of Courses Offered</h2>
+
+      <table>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Amount</th>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            
+            <b>Mobile App Development</b>
+            <!-- <ul>
+              <li>Crypto Trading Fundamental</li>
+              <li>Smart Crypto</li>
+              <li>DEFI</li>
+              <li>Trading Stategy</li>
+              <li>Technical Analysis</li>
+              <li>Fundamental Analysis</li>
+              <li>Technical Indicator</li>
+             
+            </ul> -->
+          </td>
+          <td>5 Months</td>
+          <td >
+            <p>600,000</p>
+            
+          </td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>IELTs (ONLINE)</b>
+            <!-- <ul>
+              <li>Ms Word</li>
+              <li>Ms Excel</li>
+              <li>Ms Powerpoint</li>
+              <li>Mavis Beacon</li>
+              <li>Graphics</li>
+
+            </ul> -->
+          </td>
+          <td>2 Months</td>
+          <td>200,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Graphics & Multimedia</b>
+            <ul>
+              <li>Adope Photoshop</li>
+              <li>Adobe Premiere Pro</li>
+            </ul>
+          </td>
+          <td>3 Months</td>
+          <td>200,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Python Programming</b>
+            <ul>
+              <li>Control Flow</li>
+              <li>Data Stucture </li>
+              <li>functions</li>
+              <li>File Handling</li>
+              <li>OOP</li>
+              <li>UML Diagram</li>
+
+            </ul>
+          </td>
+          <td>3 Months</td>
+          <td>200,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Advanced Excel</b>
+            <ul>
+              <li>Advanced function</li>
+              <li>Data Cleaning</li>
+              <li>pivot Table</li>
+              <li>VBA</li>
+>
+             
+            </ul>
+          </td>
+          <td>2 Months</td>
+          <td>150,000</td>
+        </tr>
+      </table>
+      <div class="pagination">
+        <a href="courses5.html">&laquo;</a>
+        <a href="courses.html">1</a>
+        <a href="courses2.html" >2</a>
+        <a href="courses3.html">3</a>
+        <a href="courses4.html">4</a>
+        <a href="courses5.html">5</a>
+        <a href="#" class="active2">6</a>
+        <a href="courses7.html">7</a>
+        <a href="courses7.html">&raquo;</a>
+      </div>
+    </div>
+
+  </div>
+  <script src="../js/courses.js"></script>
+</body>
+</html>

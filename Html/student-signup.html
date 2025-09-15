@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Signup</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-image: url('../img/background design.png');
+      background-size: cover; 
+      background-repeat: no-repeat; 
+      overflow-y: hidden; 
+    }
+
+    .container {
+      position: relative;
+      width: 90vw;
+      max-width: 900px;
+      height: 560px;
+      margin: 4rem auto;
+      border-radius: 1rem;
+      overflow: hidden;
+    }
+
+    .container::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -90px;
+      width: 60px;
+      height: 100%;
+      background: #14aadf;
+      clip-path: polygon(100% 0%, 35% 0%, 0% 100%, 100% 100%);
+      border-top-left-radius: 1rem;
+      border-bottom-left-radius: 1rem;
+      z-index: 1;
+    }
+
+    .container::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      right: -90px;
+      width: 60px;
+      height: 100%;
+      background: #14aadf;
+      clip-path: polygon(0% 0%, 65% 0%, 100% 100%, 0% 100%);
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
+      z-index: 1;
+    }
+
+    .content {
+      position: relative;
+      height: 100%;
+      padding: 2rem 6rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 2;
+    }
+
+    .logo {
+      color: #d93a7f;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      width: 320px;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"] {
+      border: 1.5px solid #14aadf;
+      padding: 0.7rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      outline-offset: 2px;
+      outline-color: #14aadf;
+    }
+
+    input::placeholder {
+      color: #666;
+    }
+
+    input[type="password"] {
+      font-family: Arial, sans-serif; 
+    }
+
+    button {
+      background-color: #14aadf;
+      border: none;
+      color: #fff;
+      padding: 0.75rem;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      cursor: pointer;
+      margin-top: 0.5rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #0f8ccf;
+    }
+
+    .login-instructor {
+      margin-top: 0.8rem;
+      font-size: 0.875rem;
+      color: #145ccf;
+      cursor: pointer;
+      text-decoration: underline;
+      align-self: flex-start;
+    }
+
+    h2 {
+      text-align: center;
+      margin-top: 2rem;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #14aadf;
+      letter-spacing: 1px;
+      position: relative;
+    }
+
+    h2::after {
+      content: '';
+      display: block;
+      width: 60px;
+      height: 4px;
+      background: #d93a7f;
+      margin: 0.5rem auto 0;
+      border-radius: 2px;
+    }
+
+    #passwordHint {
+      font-size: 0.8rem;
+      color: #888;
+      margin-top: -0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    #studentPassword:invalid + #passwordHint {
+      color: red;
+    }
+
+    #studentPassword:valid + #passwordHint {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <h2>Student Signup</h2>
+  <div class="container" role="main">
+    <div class="content">
+      <div class="logo" aria-label="Deejoft Logo">
+        <img src="../img/LOGO2 1.png" alt="" height="100" width="200">
+      </div>
+      <form id="studentSignupForm" aria-label="Signup form">
+        <input type="text" id="studentUsername" placeholder="Enter your username" aria-required="true" required/>
+        <input type="email" id="studentEmail" placeholder="Enter your email" aria-required="true" required/>
+        <input type="password" id="studentPassword" placeholder="Password" aria-label="Password input" required minlength="6"/>
+        <small id="passwordHint">Password must be at least 6 characters long</small>        
+        <button type="submit">Sign Up</button>
+        <div class="login-instructor" tabindex="0" role="button" aria-pressed="false">
+          <a href="./student.html">Login as a student ?</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
+    authDomain: "deejoft-383a2.firebaseapp.com",
+    projectId: "deejoft-383a2",
+    storageBucket: "deejoft-383a2.firebasestorage.app",
+    messagingSenderId: "1088164312193",
+    appId: "1:1088164312193:web:44277d94e64549dbb98980"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const auth = getAuth(app);
+  const db = getFirestore(app);
+
+  // ✅ Signup Form
+  document.getElementById("studentSignupForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("studentUsername").value.trim();
+    const email = document.getElementById("studentEmail").value.trim();
+    const password = document.getElementById("studentPassword").value.trim();
+
+    try {
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;
+
+      // ✅ Save name in Firebase Auth profile
+      await updateProfile(user, {
+        displayName: name || email.split('@')[0]
+      });
+
+      // ✅ Save role + user info in Firestore
+      await setDoc(doc(db, "users", user.uid), {
+        email: user.email,
+        username: name || email.split('@')[0],
+        role: "student"
+      });
+
+      alert("Signup successful ✅");
+      window.location.href = "landing.html"; // redirect to dashboard
+    } catch (error) {
+      alert("Error: " + error.message);
+    }
+  });
+</script>
+</body>
+</html>

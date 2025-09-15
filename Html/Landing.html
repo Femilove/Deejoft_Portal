@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Layout</title>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <link rel="stylesheet" href="../css/landing.css">
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+</head>
+<body>
+
+   <!-- Menu Button (only visible on mobile) -->
+  <button class="menu-btn" id="menuBtn">☰</button>
+
+  <div class="parent">
+    <div class="sidebar div1" id="sidebar" >
+      <button class="close-btn" id="closeBtn">✖</button>
+      <div class="d">
+        <div class="logo">
+          <img src="../img/Frame 47.png" alt="">
+        </div>
+        <nav>
+          <a href="#" class="active">🏠 Dashboard</a>
+          <a href="Pay.html">💳 Payment Info</a>
+          <a href="Registration.html">📝 Registration</a>
+          <a href="courses.html">📚 Courses</a>
+          <a href="#">📉 Drop Semester</a>
+          <a href="#">📊 Result</a>
+          <a href="#">📢 Notice</a>
+          <a href="#">📅 Schedule</a>
+          
+        </nav>
+      </div>
+      <button id="logoutBtn" class="logout">🚪 Logout</button>
+    </div>
+
+    <div class="div2" data-aos="fade-down"
+     data-aos-easing="linear"
+     data-aos-duration="1500"><input type="text" placeholder="Search" class="search" /></div>
+
+    <div class="profile" data-aos="zoom-in" data-aos-duration="1000">
+      <img src="../img/Frame 19.png" alt="Profile" >
+      <div>
+        <!-- Username will be updated dynamically -->
+        <p id="username" class="p">John Doe</p>
+        <span class="s">3rd year</span>
+      </div>
+    </div>
+
+    <div class="div4" data-aos="fade-left" data-aos-duration="1000"><img src="../img/bell-ringing.png" alt="Notification" ></div>
+
+    <!-- Banner -->
+    <div class="banner" data-aos="fade-left" data-aos-duration="1000">
+      <div class="text">
+          <p class="date">September 4, 2023</p>
+          <div class="text_below">
+            <h2 id="welcomeText">Welcome back, John!</h2>
+            <p>Always stay updated in your student portal</p>
+          </div>
+        </div>
+    </div>
+
+    <div class="div6">
+      <div class="section-header" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Finance</span>
+      </div>
+      <div class="finance" data-aos="fade-up"
+     data-aos-duration="3000">
+        <a href="http://" class="finance1"><img src="../img/Frame 171.png" alt="Finance"></a>
+        <a href="http://" class="finance1"><img src="../img/Frame 18.png" alt="Finance"></a>
+        <a href="http://" class="finance1"><img src="../img/Frame 191.png" alt="Finance"></a>
+        
+        
+        
+      </div>
+    </div>
+
+    <div class="div8">
+      <div class="section-header" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Course Instructors</span>
+      </div>
+      <div class="instructor" data-aos="zoom-in-up" data-aos-duration="2000">
+        <img src="../img/Ellipse 16.png" alt="" class="instructor1">
+        <img src="../img/Ellipse 17.png" alt="" class="instructor1">
+        <img src="../img/Ellipse 18.png" alt="" class="instructor1">
+      </div>
+    </div>
+
+    <div class="div7">
+      <div class="section-header" data-aos="zoom-in" data-aos-duration="1000">
+        <span class="notice">Daily notice</span>
+        <span class="see-all"><a href="http://" >See All</a></span>
+      </div>
+      <div class="message" data-aos="fade-left"
+     data-aos-anchor="#example-anchor"
+     data-aos-offset="500"
+     data-aos-duration="2000">
+        <span>
+          <p><strong>Prelim payment due</strong></p>
+          <p class="lighter">Sorem ipsum dolor sit amet, consectetur adipiscing elit<a href="http://" class="block">see more</a></p>
+        </span>
+
+        <span>
+          <p><strong>Exam schedule</strong></p>
+          <p class="lighter">Norem ipsum dolor sit amet, consectetur adipiscing elit. 
+            <span class="block"> Nunc vulputate libero et velit</span> 
+            <span class="block">interdum, ac aliquet odio</span> mattis 
+            <a href="http://" class="block">see more</a>
+          </p>
+        </span>
+      </div>
+    </div>
+
+    <div class="div9">
+      <div class="section-header" data-aos="zoom-in" data-aos-duration="1000">
+        <span>Enrolled Courses</span>
+        <span class="see-all"><a href="#">See All</a></span>
+      </div>
+
+      <div class="courses" data-aos="fade-up"
+     data-aos-anchor-placement="center-bottom">
+        <div class="course-card course-card1">
+          <h3>Object Oriented <span class="block">Programming</span></h3>
+          <button class="view-btn">View</button>
+        </div>
+
+        <div class="course-card course-card2">
+          <h3>Fundamentals of <span class="block">Database Systems</span></h3>
+          <button class="view-btn">View</button>
+        </div>
+      </div>
+   </div>
+
+  </div>
+
+  <script>
+    AOS.init();
+  </script>
+  
+
+  <!-- Firebase Script -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+    const menuBtn = document.getElementById("menuBtn");
+    const closeBtn = document.getElementById("closeBtn");
+    const sidebar = document.getElementById("sidebar");
+
+    // sidebar
+    menuBtn.addEventListener("click", () => {
+      sidebar.classList.add("active");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      sidebar.classList.remove("active");
+    });
+
+    //////////
+
+    
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
+      authDomain: "deejoft-383a2.firebaseapp.com",
+      projectId: "deejoft-383a2",
+      storageBucket: "deejoft-383a2.firebasestorage.app",
+      messagingSenderId: "1088164312193",
+      appId: "1:1088164312193:web:44277d94e64549dbb98980"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    // 🔐 Redirect to login if not signed in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "student.html"; 
+      } else {
+        // ✅ Replace John Doe and Welcome back text with username/email
+        const username = user.displayName ;
+        document.getElementById("username").textContent = username;
+        document.getElementById("welcomeText").textContent = `Welcome back, ${username}!`;
+      }
+    });
+
+    // 🚪 Logout function
+    document.getElementById("logoutBtn").addEventListener("click", () => {
+      signOut(auth)
+        .then(() => {
+          window.location.href = "student.html"; // back to login
+        })
+        .catch((error) => {
+          alert("Error logging out: " + error.message);
+        });
+    });
+
+    // 🔒 Prevent going back after logout
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, "", window.location.href);
+    };
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Offered</title>
+  <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+  <!-- Menu Button (only visible on mobile) -->
+  <button class="menu-btn" id="menuBtn">☰</button>
+  <div class="parent">
+    <!-- Sidebar -->
+    <div class="sidebar div1" id="sidebar">
+      <button class="close-btn" id="closeBtn">✖</button>
+      <div>
+        <div class="logo">
+          <img src="../img/Frame 47.png" alt="Logo">
+        </div>
+        <nav>
+          <a href="Landing.html">🏠 Dashboard</a>
+          <a href="pay.html">💳 Payment Info</a>
+          <a href="Registration.html">📝 Registration</a>
+          <a href="courses.html" class="active">📚 Courses</a>
+          <a href="#">📉 Drop Semester</a>
+          <a href="#">📊 Result</a>
+          <a href="#">📢 Notice</a>
+          <a href="#">📅 Schedule</a>
+        </nav>
+      </div>
+      <a href="#" class="logout">🚪 Logout</a>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="courses-section">
+      <h2>📚 List of Courses Offered</h2>
+
+      <table>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Amount</th>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            
+            <b>FRONT-END DEVELOPMENT</b>
+            <ul>
+              <li>HTML</li>
+              <li>Bootstrp, tailwind CSS</li>
+              <li>Javascript</li>
+              <li>React Js</li>
+             
+            </ul>
+          </td>
+          <td>4 Months</td>
+          <td >
+            <p>250,000</p>
+            
+          </td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Back-End Development</b>
+            <ul>
+              <li>Node Js</li>
+              <li>Express</li>
+              <li>Api</li>
+
+            </ul>
+          </td>
+          <td>2-3 Months</td>
+          <td>250,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Cybersecurity</b>
+            <ul>
+              <li>Web Fundamental {HTML,CSS,JavaScript}</li>
+              <li>Infomation Security</li>
+              <li>Cloud Security</li>
+              <li>Network Security</li>
+              <li>Systems Fundamental</li>
+              <li>Linux</li>
+              <li>Bug Bounty</li>
+              <li>Pyrhon, Javascript</li>
+              <li>SQL</li>
+              <li>Penetration Testing</li>
+            </ul>
+          </td>
+          <td>7 Months</td>
+          <td>650,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>SOFTWARE Engineering (Web / App)</b>
+            <ul>
+              <li>Python</li>
+              <li>Object Oriented Programming (OOP)</li>
+              <li>Agile</li>
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>Database Designs and algorithms</li>
+              <li>Node JS</li>
+              <li>Javascript</li>
+              <li>React ja & React Nature</li>
+              <li>Git & Github</li>
+              <li>Django</li>
+            </ul>
+          </td>
+          <td>7 Months</td>
+          <td>600,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Data Science</b>
+            <ul>
+              <li>Module 1</li>
+              <li class="inside">R Programming</li>
+              <li class="inside">SQL</li>
+              <li class="inside">Tableau & Power BI</li>
+              <li>Module 2</li>
+              <li class="inside">Python</li>
+              <li class="inside">Machine Learning</li>
+              <li class="inside">Deep Learning</li>
+              <li class="inside">Natural Language Processing</li>
+              <li class="inside">Computer Vision / SAT</li>
+            </ul>
+          </td>
+          <td>6 Months</td>
+          <td>500,000</td>
+        </tr>
+      </table>
+      <div class="pagination">
+        <a href="courses.html">&laquo;</a>
+        <a href="courses.html">1</a>
+        <a href="#" class="active2">2</a>
+        <a href="courses3.html">3</a>
+        <a href="courses4.html">4</a>
+        <a href="courses5.html">5</a>
+        <a href="courses6.html">6</a>
+        <a href="courses7.html">7</a>
+        <a href="courses3.html">&raquo;</a>
+      </div>
+    </div>
+
+  </div>
+  <script src="../js/courses.js"></script>
+</body>
+</html>

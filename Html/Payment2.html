@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payment Page</title>
+  <link rel="stylesheet" href="Payment2.css">
+</head>
+<body>
+  <div class="parent">
+    <!-- Sidebar -->
+    <div class="sidebar div1">
+      <div>
+        <div class="logo">
+          <img src="Frame 47.png" alt="Logo">
+        </div>
+        <nav>
+          <a href="Landing.html">🏠 Dashboard</a>
+          <a href="payment.html" class="active">💳 Payment Info</a>
+          <a href="#">📝 Registration</a>
+          <a href="#">📚 Courses</a>
+          <a href="#">📉 Drop Semester</a>
+          <a href="#">📊 Result</a>
+          <a href="#">📢 Notice</a>
+          <a href="#">📅 Schedule</a>
+        </nav>
+      </div>
+      <a href="#" class="logout">🚪 Logout</a>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="payment-container">
+      <div class="payment-card">
+        <h2>Make a Payment</h2>
+        <form>
+          <div class="form-group">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="Enter amount">
+          </div>
+
+          <div class="form-group">
+            <label for="card-name">Cardholder Name</label>
+            <input type="text" id="card-name" placeholder="Your Name">
+          </div>
+
+          <div class="form-group">
+            <label for="card-number">Card Number</label>
+            <input type="text" id="card-number" placeholder="1234 5678 9012 3456">
+          </div>
+
+          <div class="form-group">
+            <label for="expiry">Expiry Date</label>
+            <input type="text" id="expiry" placeholder="MM/YY">
+          </div>
+
+          <div class="form-group">
+            <label for="cvv">CVV</label>
+            <input type="password" id="cvv" placeholder="***">
+          </div>
+
+          <div class="form-group">
+            <label for="method">Payment Method</label>
+            <select id="method">
+              <option>Credit Card</option>
+              <option>Debit Card</option>
+              <option>Bank Transfer</option>
+              <option>PayPal</option>
+            </select>
+          </div>
+
+          <button type="submit" class="pay-btn">Pay Now</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

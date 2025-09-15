@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Courses Offered</title>
+  <link rel="stylesheet" href="../css/courses.css">
+</head>
+<body>
+  <!-- Menu Button (only visible on mobile) -->
+  <button class="menu-btn" id="menuBtn">☰</button>
+
+  <div class="parent">
+    <!-- Sidebar -->
+    <div class="sidebar div1" id="sidebar">
+      <button class="close-btn" id="closeBtn">✖</button>
+      <div>
+        <div class="logo">
+          <img src="../img/Frame 47.png" alt="Logo">
+        </div>
+        <nav>
+          <a href="Landing.html">🏠 Dashboard</a>
+          <a href="pay.html">💳 Payment Info</a>
+          <a href="Registration.html">📝 Registration</a>
+          <a href="courses.html" class="active">📚 Courses</a>
+          <a href="#">📉 Drop Semester</a>
+          <a href="#">📊 Result</a>
+          <a href="#">📢 Notice</a>
+          <a href="#">📅 Schedule</a>
+        </nav>
+      </div>
+      <a href="#" class="logout">🚪 Logout</a>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="courses-section">
+      <h2>📚 List of Courses Offered</h2>
+
+      <table>
+        <tr>
+          <th>Course</th>
+          <th>Duration</th>
+          <th>Amount</th>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            
+            <b>Robotics</b>
+            <ul>
+              <li>Arduino</li>
+              <li>Aspberry Pi</li>
+              <li>Embedded System</li>
+              <li>Industrial Robotics</li>
+              <li>C</li>
+              <li>Python</li>
+              <li>Medical Robotics</li>
+              <li>Medical Robotics</li>
+              <li>Automation</li>
+             
+            </ul>
+          </td>
+          <td>10 Months</td>
+          <td >
+            <p>4 million</p>
+            
+          </td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Product Management</b>
+            <ul>
+              <li>Jira</li>
+              <li>Trello</li>
+              <li>Asana</li>
+              <li>Figma</li>
+              <li>Python</li>
+
+            </ul>
+          </td>
+          <td>4 Months</td>
+          <td>300,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Project Management</b>
+            <ul>
+              <li>Trello</li>
+              <li>Jira</li>
+            </ul>
+          </td>
+          <td>4 Months</td>
+          <td>300,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Software Testing</b>
+            <ul>
+              <li>Introduction</li>
+              <li>Testing Models</li>
+              <li>Testing Types</li>
+              <li>Automation Testing with Selenium</li>
+              <li>Ai Testing</li>
+              <li>Mobile Testing</li>
+
+            </ul>
+          </td>
+          <td>4 Months</td>
+          <td>400,000</td>
+        </tr>
+        <tr onclick="window.location.href='pay.html'">
+          <td>
+            <b>Database Management</b>
+            <ul>
+              <li>Database</li>
+              <li>ER Modeling</li>
+              <li>UML Diagram</li>
+              <li>SQL</li>
+              <li>Normalization</li>
+              <li>Transaction and Concurrency</li>
+              <li>Nosak</li>
+             
+            </ul>
+          </td>
+          <td>4 Months</td>
+          <td>300,000</td>
+        </tr>
+      </table>
+      <div class="pagination">
+        <a href="courses3.html">&laquo;</a>
+        <a href="courses.html">1</a>
+        <a href="courses2.html" >2</a>
+        <a href="courses3.html">3</a>
+        <a href="#" class="active2">4</a>
+        <a href="courses5.html">5</a>
+        <a href="courses6.html">6</a>
+        <a href="courses7.html">7</a>
+        <a href="courses5.html">&raquo;</a>
+      </div>
+    </div>
+
+  </div>
+  <script src="../js/courses.js"></script>
+</body>
+</html>
