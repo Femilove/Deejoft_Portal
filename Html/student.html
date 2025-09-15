@@ -222,7 +222,7 @@
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists() && docSnap.data().role === "student") {
-        window.location.href = "landing.html";
+        window.location.href = "Landing.html";
       } else {
         errorBox.innerText = "Access denied! This login is for students only.";
         errorBox.style.display = "block";
