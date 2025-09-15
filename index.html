@@ -167,7 +167,7 @@
   <div class="container" role="main">
     <div class="content">
       <div class="logo" aria-label="Deejoft Logo">
-        <img src="../img/LOGO2 1.png" alt="" height="100" width="200">
+        <img src="img/LOGO2 1.png" alt="" height="100" width="200">
       </div>
       <form id="studentSignupForm" aria-label="Signup form">
         <input type="text" id="studentUsername" placeholder="Enter your username" aria-required="true" required/>
@@ -176,7 +176,7 @@
         <small id="passwordHint">Password must be at least 6 characters long</small>        
         <button type="submit">Sign Up</button>
         <div class="login-instructor" tabindex="0" role="button" aria-pressed="false">
-          <a href="./student.html">Login as a student ?</a>
+          <a href="Html/student.html">Login as a student ?</a>
         </div>
       </form>
     </div>
@@ -225,7 +225,7 @@
       });
 
       alert("Signup successful ✅");
-      window.location.href = "landing.html"; // redirect to dashboard
+      window.location.href = "Html/landing.html"; // redirect to dashboard
     } catch (error) {
       alert("Error: " + error.message);
     }
