@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <link rel="stylesheet" href="./css/index.css">
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>Admin</h2>
+    <a href="#" class="active" onclick="showSection('dashboard')"><i class="fas fa-home"></i> Dashboard</a>
+    <a href="#" onclick="showSection('students')"><i class="fas fa-user-graduate"></i> Students</a>
+    <a href="#" onclick="showSection('courses')"><i class="fas fa-book"></i> Courses</a>
+    <a href="#" onclick="showSection('announcements')"><i class="fas fa-bullhorn"></i> Announcements</a>
+    <a href="#" onclick="logout()"><i class="fas fa-sign-out-alt"></i> Logout</a>
+  </div>
+
+  <!-- Main Content -->
+  <div class="main">
+    <!-- Dashboard -->
+    <div id="dashboard" class="section active">
+      <h3>📊 Dashboard</h3>
+      <p>Welcome, Admin!</p>
+    </div>
+
+    <!-- Students -->
+    <div id="students" class="section">
+      <h3>👩‍🎓 Students</h3>
+      <table id="studentsTable">
+        <thead>
+          <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+
+    <!-- Courses -->
+    
+    <div id="courses" class="section">
+      <h3>📚 Manage Courses</h3>
+      <form id="courseForm">
+        <input type="text" id="courseTitle" placeholder="Course Title" required>
+
+        <div id="detailsContainer">
+          <input type="text" class="detail-input" placeholder="Course Detail 1">
+        </div>
+
+        <button type="button" id="addDetailBtn">➕ Add Detail</button>
+
+        <input type="text" id="courseDuration" placeholder="Duration" required>
+        <input type="number" id="courseAmount" placeholder="Amount" required>
+        <button type="submit">Add Course</button>
+      </form>
+
+      <table id="coursesTable">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Details</th>
+            <th>Duration</th>
+            <th>Amount</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+
+
+    <!-- Announcements -->
+    <div id="announcements" class="section">
+      <h3>📢 Announcements</h3>
+      <form id="announcementForm">
+        <textarea id="announcementText" placeholder="Enter announcement..." required></textarea>
+        <button type="submit">Publish</button>
+      </form>
+      <ul id="announcementsList"></ul>
+    </div>
+  </div>
+
+  <!-- Firebase + Admin Logic -->
+  <script type="module" src="./js/index.js">
+  </script>
+</body>
+</html>

@@ -4,9 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Payment Page</title>
-  <link rel="stylesheet" href="../css/pay.css">
+  <link rel="stylesheet" href="../css/notice.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  
 </head>
 </head>
 <body>
@@ -23,33 +24,23 @@
         </div>
         <nav>
           <a href="Landing.html">🏠 Dashboard</a>
-          <a href="pay.html" class="active">💳 Payment Info</a>
+          <a href="pay.html" >💳 Payment Info</a>
           <a href="Registration.html">📝 Registration</a>
           <a href="courses.html">📚 Courses</a>
           <a href="#">📉 Drop Semester</a>
           <a href="#">📊 Result</a>
-          <a href="notice.html">📢 Notice</a>
+          <a href="#" class="active">📢 Notice</a>
           <a href="#">📅 Schedule</a>
         </nav>
       </div>
       <a href="#" class="logout">🚪 Logout</a>
     </div>
 
-    <!-- Payment Section -->
-    <div class="payment-container">
-      
-      <div class="koral" data-aos="fade-up" data-aos-duration="1000">
-        <a href="http://checkout.korapay.com/pay/coursefee">
-        <p>pay with <span class="block">korapay</span></p>
-        </a>
-      </div>
-      <div class="paystack" data-aos="fade-down" data-aos-duration="1000">
-       <a href="Paystack.html">
-        <p>pay with <span class="block">Paystack</span></p>
-        </a>
-      </div>
+    <!-- Notice Section -->
+    <div class="container">
+        <h2>📢 Latest Announcements</h2>
+        <div id="notices"></div>
     </div>
-  </div>
 
   <script>
     AOS.init();
@@ -69,6 +60,6 @@
   </script>
 
   <!-- Paystack Inline Script -->
-
+<script type="module" src="../js/notice.js" defer></script>
 </body>
 </html>

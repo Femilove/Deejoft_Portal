@@ -25,7 +25,7 @@
           <a href="courses.html" class="active">📚 Courses</a>
           <a href="#">📉 Drop Semester</a>
           <a href="#">📊 Result</a>
-          <a href="#">📢 Notice</a>
+          <a href="notice.html">📢 Notice</a>
           <a href="#">📅 Schedule</a>
         </nav>
       </div>
@@ -37,92 +37,16 @@
       <h2>📚 List of Courses Offered</h2>
 
       <table>
-        <tr>
-          <th>Course</th>
-          <th>Duration</th>
-          <th>Amount</th>
-        </tr>
-        <tr onclick="window.location.href='pay.html'">
-          <td>
-            
-            <b>Digital Marketing</b>
-            <ul>
-              <li>Affiliate Marketing</li>
-              <li>Copywriting</li>
-              <li>Content Marketing</li>
-              <li>Email Marketing</li>
-              <li>Social Media Marketing</li>
-              <li>Facebook, Instagram, X, LinkedIn</li>
-              <li>SEO</li>
-              <li>Pay Per Click</li>
-            </ul>
-          </td>
-          <td>4 Months</td>
-          <td >
-            <p>200,000</p>
-            
-          </td>
-        </tr>
-        <tr onclick="window.location.href='pay.html'">
-          <td>
-            <b>UI/UX (Product Design)</b>
-            <ul>
-              <li>Figma</li>
-              <li>Prototype</li>
-              <li>Wireframe</li>
-              <li>Motion Design</li>
-              <li>Sitemaps</li>
-              <li>UX Research</li>
-              <li>HTML, CSS, JavaScript</li>
-            </ul>
-          </td>
-          <td>5 Months</td>
-          <td>300,000</td>
-        </tr>
-        <tr onclick="window.location.href='pay.html'">
-          <td>
-            <b>Graphics Design</b>
-            <ul>
-              <li>Adobe Photoshop</li>
-              <li>Adobe Illustrator</li>
-              <li>Corel Draw</li>
-              <li>Portfolio Building</li>
-              <li>Infographics</li>
-              <li>Layouts</li>
-            </ul>
-          </td>
-          <td>3 Months</td>
-          <td>150,000</td>
-        </tr>
-        <tr onclick="window.location.href='pay.html'">
-          <td>
-            <b>Animation (2D & 3D)</b>
-            <ul>
-              <li>Icone & Maya</li>
-              <li>Toon Boom</li>
-            </ul>
-          </td>
-          <td>4 Months</td>
-          <td>300,000</td>
-        </tr>
-        <tr onclick="window.location.href='pay.html'">
-          <td>
-            <b>Full Stack Web</b>
-            <ul>
-              <li>HTML, CSS</li>
-              <li>Bootstrap, Tailwind CSS</li>
-              <li>JavaScript</li>
-              <li>React JS</li>
-              <li>Python</li>
-              <li>Node.js</li>
-              <li>MySQL</li>
-              <li>Git & GitHub</li>
-            </ul>
-          </td>
-          <td>6 Months</td>
-          <td>500,000</td>
-        </tr>
+        <thead>
+          <tr>
+            <th>Course</th>
+            <th>Duration</th>
+            <th>Amount</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
       </table>
+
       <div class="pagination">
         
         <a href="#" class="active2">1</a>
@@ -137,6 +61,96 @@
     </div>
 
   </div>
+
+  <!-- Firebase SDKs -->
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+  import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
+    authDomain: "deejoft-383a2.firebaseapp.com",
+    projectId: "deejoft-383a2",
+    storageBucket: "deejoft-383a2.firebasestorage.app",
+    messagingSenderId: "1088164312193",
+    appId: "1:1088164312193:web:44277d94e64549dbb98980"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  const tableBody = document.querySelector("table tbody");
+  const paginationDiv = document.querySelector(".pagination");
+
+  let courses = [];
+  let currentPage = 1;
+  const perPage = 5; // Number of rows per page
+
+  async function loadCourses() {
+    const querySnapshot = await getDocs(collection(db, "courses"));
+    courses = querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    renderCourses();
+    renderPagination();
+  }
+
+function renderCourses() {
+  tableBody.innerHTML = "";
+  const start = (currentPage - 1) * perPage;
+  const end = start + perPage;
+  const pageCourses = courses.slice(start, end);
+
+  pageCourses.forEach(course => {
+    // Format details list
+    const detailsList = Array.isArray(course.details)
+      ? course.details.map(d => `<li>${d}</li>`).join("")
+      : "<li>No details available</li>";
+
+    // Format amount (e.g. ₦300,000)
+    const formattedAmount = course.amount
+      ? `₦${Number(course.amount).toLocaleString()}`
+      : "-";
+
+    // Build table row
+    const row = `
+      <tr onclick="window.location.href='pay.html'">
+        <td>
+          <b>${course.title || "Untitled"}</b>
+          <ul>${detailsList}</ul>
+        </td>
+        <td>${course.duration || "-"}</td>
+        <td>${formattedAmount}</td>
+      </tr>
+    `;
+    tableBody.innerHTML += row;
+  });
+}
+
+
+  function renderPagination() {
+    paginationDiv.innerHTML = "";
+    const totalPages = Math.ceil(courses.length / perPage);
+
+    for (let i = 1; i <= totalPages; i++) {
+      const btn = document.createElement("a");
+      btn.href = "#";
+      btn.textContent = i;
+      if (i === currentPage) btn.classList.add("active2");
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        currentPage = i;
+        renderCourses();
+        renderPagination();
+      });
+      paginationDiv.appendChild(btn);
+    }
+  }
+
+  loadCourses();
+</script>
+
+
   <script src="../js/courses.js"></script>
+
+
 </body>
 </html>
