@@ -16,10 +16,8 @@
       height: 100%;
       font-family: 'Arial', sans-serif;
       background-image: url('./img/background design.png');
-      background-size: cover; 
-      background-repeat: no-repeat; 
-      
-       
+      background-size: cover;
+      background-repeat: no-repeat;
     }
 
     .container {
@@ -74,6 +72,8 @@
       color: #d93a7f;
       display: flex;
       align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
       gap: 0.5rem;
     }
 
@@ -98,7 +98,7 @@
     }
 
     input[type="password"] {
-      font-family: Arial, sans-serif; 
+      font-family: Arial, sans-serif;
     }
 
     button {
@@ -122,9 +122,12 @@
       margin-top: 0.8rem;
       font-size: 0.875rem;
       color: #145ccf;
-      cursor: pointer;
       text-decoration: underline;
       align-self: flex-start;
+    }
+
+    .login-instructor a {
+      color: inherit;
     }
 
     h2 {
@@ -161,6 +164,72 @@
     #studentPassword:valid + #passwordHint {
       color: green;
     }
+
+    /* 📱 Responsive Styles (below laptop size) */
+    @media (max-width: 1024px) {
+
+    body, html {
+      height: 100%;
+      font-family: 'Arial', sans-serif;
+      background-image: none;
+      background-size: cover;
+      background-repeat: no-repeat;
+    }
+
+      .container {
+        width: 95vw;
+        height: auto;
+        margin: 2rem auto;
+      }
+
+      .content {
+        flex-direction: column;
+        padding: 2rem;
+        justify-content: center;
+        text-align: center;
+        gap: 2rem;
+      }
+
+      .container::before,
+      .container::after {
+        display: none;
+      }
+
+      .logo img {
+        width: 160px;
+        height: auto;
+      }
+
+      form {
+        width: 100%;
+        max-width: 350px;
+      }
+
+      h2 {
+        font-size: 1.75rem;
+        margin-top: 1.5rem;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .content {
+        padding: 1.5rem;
+      }
+
+      form {
+        width: 100%;
+        max-width: 320px;
+      }
+
+      input, button {
+        font-size: 0.95rem;
+        padding: 0.6rem 0.9rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -168,70 +237,66 @@
   <div class="container" role="main">
     <div class="content">
       <div class="logo" aria-label="Deejoft Logo">
-        <img src="./img/LOGO2 1.png" alt="" height="100" width="200">
+        <img src="./img/LOGO2 1.png" alt="Deejoft Logo" height="100" width="200">
       </div>
       <form id="studentSignupForm" aria-label="Signup form">
-        <input type="text" id="studentUsername" placeholder="Enter your username" aria-required="true" required/>
-        <input type="email" id="studentEmail" placeholder="Enter your email" aria-required="true" required/>
-        <input type="password" id="studentPassword" placeholder="Password" aria-label="Password input" required minlength="6"/>
-        <small id="passwordHint">Password must be at least 6 characters long</small>        
+        <input type="text" id="studentUsername" placeholder="Enter your username" required />
+        <input type="email" id="studentEmail" placeholder="Enter your email" required />
+        <input type="password" id="studentPassword" placeholder="Password" minlength="6" required />
+        <small id="passwordHint">Password must be at least 6 characters long</small>
         <button type="submit">Sign Up</button>
-        <div class="login-instructor" tabindex="0" role="button" aria-pressed="false">
-          <a href="Html/student.html">Login as a student ?</a>
+        <div class="login-instructor">
+          <a href="Html/student.html">Login as a student?</a>
         </div>
       </form>
     </div>
   </div>
 
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+    import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-<script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
-  import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
+      authDomain: "deejoft-383a2.firebaseapp.com",
+      projectId: "deejoft-383a2",
+      storageBucket: "deejoft-383a2.firebasestorage.app",
+      messagingSenderId: "1088164312193",
+      appId: "1:1088164312193:web:44277d94e64549dbb98980"
+    };
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
-    authDomain: "deejoft-383a2.firebaseapp.com",
-    projectId: "deejoft-383a2",
-    storageBucket: "deejoft-383a2.firebasestorage.app",
-    messagingSenderId: "1088164312193",
-    appId: "1:1088164312193:web:44277d94e64549dbb98980"
-  };
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
 
-  const app = initializeApp(firebaseConfig);
-  const auth = getAuth(app);
-  const db = getFirestore(app);
+    document.getElementById("studentSignupForm").addEventListener("submit", async (e) => {
+      e.preventDefault();
 
-  // ✅ Signup Form
-  document.getElementById("studentSignupForm").addEventListener("submit", async (e) => {
-    e.preventDefault();
+      const name = document.getElementById("studentUsername").value.trim();
+      const email = document.getElementById("studentEmail").value.trim();
+      const password = document.getElementById("studentPassword").value.trim();
 
-    const name = document.getElementById("studentUsername").value.trim();
-    const email = document.getElementById("studentEmail").value.trim();
-    const password = document.getElementById("studentPassword").value.trim();
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        const user = userCredential.user;
 
-    try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-      const user = userCredential.user;
+        await updateProfile(user, {
+          displayName: name || email.split('@')[0]
+        });
 
-      // ✅ Save name in Firebase Auth profile
-      await updateProfile(user, {
-        displayName: name || email.split('@')[0]
-      });
+        await setDoc(doc(db, "users", user.uid), {
+          email: user.email,
+          username: name || email.split('@')[0],
+          role: "student"
+        });
 
-      // ✅ Save role + user info in Firestore
-      await setDoc(doc(db, "users", user.uid), {
-        email: user.email,
-        username: name || email.split('@')[0],
-        role: "student"
-      });
-
-      alert("Signup successful ✅");
-      window.location.href = "Html/Landing.html"; // redirect to dashboard
-    } catch (error) {
-      alert("Error: " + error.message);
-    }
-  });
-</script>
+        alert("Signup successful ✅");
+        window.location.href = "Html/Landing.html";
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    });
+  </script>
 </body>
 </html>

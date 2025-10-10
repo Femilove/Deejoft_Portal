@@ -15,9 +15,9 @@
     height: 100%;
     font-family: 'Arial', sans-serif;
     background-image: url('../img/background design.png');
-    background-size: cover; 
-    background-repeat: no-repeat; 
-    overflow-y: hidden; 
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-y: hidden;
   }
 
   .container {
@@ -159,6 +159,77 @@
     padding: 6px 10px;
     display: none;
   }
+
+  /* 📱 Responsive styles (below laptop size) */
+  @media (max-width: 1024px) {
+      body, html {
+        height: 100%;
+        font-family: 'Arial', sans-serif;
+        background-image: none;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow-y: auto;
+  }
+
+    .container {
+      width: 95vw;
+      height: auto;
+      margin: 2rem auto;
+    }
+
+    .content {
+      flex-direction: column;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      gap: 2rem;
+    }
+
+    .container::before,
+    .container::after {
+      display: none;
+    }
+
+    .logo img {
+      width: 160px;
+      height: auto;
+    }
+
+    form {
+      width: 100%;
+      max-width: 350px;
+    }
+
+    h2 {
+      font-size: 1.75rem;
+      margin-top: 1.5rem;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .content {
+      padding: 1.5rem;
+    }
+
+    form {
+      width: 100%;
+      max-width: 320px;
+    }
+
+    input, button {
+      font-size: 0.95rem;
+      padding: 0.6rem 0.9rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    .login-student {
+      text-align: center;
+      align-self: center;
+    }
+  }
 </style>
 </head>
 <body>
@@ -166,16 +237,14 @@
   <div class="container" role="main">
     <div class="content">
       <div class="logo" aria-label="Deejoft Logo">
-        <img src="../img/LOGO2 1.png" alt="" height="100" width="200">
+        <img src="../img/LOGO2 1.png" alt="Deejoft Logo" height="100" width="200">
       </div>
       <form id="studentLoginForm" aria-label="Login form">
-        <!-- 🔴 Error message box -->
         <div id="errorBox" class="error-message"></div>
 
-        <input type="email" id="studentEmail" placeholder="Enter your email" aria-required="true" required/>
-        <input type="password" id="studentPassword" placeholder="Password" aria-label="Password input" required/>
+        <input type="email" id="studentEmail" placeholder="Enter your email" required />
+        <input type="password" id="studentPassword" placeholder="Password" required />
         <button type="submit">Login</button>
-
 
         <div class="login-student">
           <a href="../index.html">Don't have an account? Sign up as a Student</a>
@@ -207,7 +276,8 @@
 
   loginForm.addEventListener("submit", async (e) => {
     e.preventDefault();
-    errorBox.style.display = "none"; // hide error before new login
+    errorBox.style.display = "none";
+
     const email = document.getElementById("studentEmail").value;
     const password = document.getElementById("studentPassword").value;
 
