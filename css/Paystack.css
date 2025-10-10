@@ -131,3 +131,97 @@
     .pay-btn:hover {
       background: linear-gradient(90deg, #925fe2, #7b3fe2);
     }
+
+             /* Menu Button */
+    .menu-btn {
+      display: none;
+      font-size: 26px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      margin: 10px;
+      z-index: 1100;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      color: #925fe2;
+      user-select: none;
+    }
+
+    /* Close Button inside Sidebar */
+    .close-btn {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      align-self: flex-end;
+      margin-bottom: 20px;
+      color: #fff;
+      user-select: none;
+    }
+
+
+/* Mobile Friendly */
+    @media (max-width: 768px) {
+
+
+       .parent {
+        display: block;
+        padding: 10px 10px 60px 10px;
+      }
+
+      /* Sidebar offscreen by default */
+      .div1 {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        left: 0;
+        width: 220px;
+        height: 100%;
+        
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+      }
+
+      .sidebar {
+        background: linear-gradient(
+          to bottom,
+          rgba(146, 95, 226, 1) 0%,
+          rgba(146, 95, 226, 0) 190%
+        );
+        color: #fff;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255,255,255,0.3) transparent;
+      }
+
+
+      .sidebar nav a {
+
+        padding: 15px;
+        margin-top: 20px;
+
+      }
+
+      .div1.active {
+        transform: translateX(0);
+      }
+
+
+      .menu-btn {
+        display: block;
+      }
+
+      .close-btn {
+        display: block;
+      
+      }
+    }    

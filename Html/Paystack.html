@@ -8,25 +8,29 @@
   <link rel="stylesheet" href="../css/Paystack.css">
 </head>
 <body>
+  <!-- Menu Button (only visible on mobile) -->
+  <button class="menu-btn" id="menuBtn">☰</button>
+
   <div class="parent">
     <!-- Sidebar -->
-    <div class="sidebar div1">
-      <div>
+    <div class="sidebar div1" id="sidebar">
+      <button class="close-btn" id="closeBtn">✖</button>
+      <div class="d">
         <div class="logo">
-          <img src="../img/Frame 47.png" alt="Logo">
+          <img src="../img/Frame 47.png" alt="">
         </div>
         <nav>
-          <a href="Landing.html">🏠 Dashboard</a>
-          <a href="#" class="active">💳 Payment Info</a>
-          <a href="#">📝 Registration</a>
+          <a href="Landing.html" >🏠 Dashboard</a>
+          <a href="pay.html" class="active">💳 Payment Info</a>
+          <a href="Registration.html" >📝 Registration</a>
           <a href="courses.html">📚 Courses</a>
           <a href="#">📉 Drop Semester</a>
           <a href="#">📊 Result</a>
-          <a href="#">📢 Notice</a>
+          <a href="notice.html">📢 Notice</a>
           <a href="#">📅 Schedule</a>
         </nav>
       </div>
-      <a href="#" class="logout">🚪 Logout</a>
+      <button id="logoutBtn" class="logout">🚪 Logout</button>
     </div>
 
     <!-- Payment Section -->
@@ -78,6 +82,28 @@
       });
       handler.openIframe();
     }
+
+        const menuBtn = document.getElementById("menuBtn");
+        const closeBtn = document.getElementById("closeBtn");
+        const sidebar = document.getElementById("sidebar");
+
+        // sidebar
+        menuBtn.addEventListener("click", () => {
+          sidebar.classList.add("active");
+        });
+
+        closeBtn.addEventListener("click", () => {
+          sidebar.classList.remove("active");
+        });
+
+    //////////
+    document.getElementById("examForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("fullname").value;
+      alert("✅ " + name + ", you have successfully registered for the exam!");
+      this.reset();
+    });
+  
   </script>
 </body>
 </html>
