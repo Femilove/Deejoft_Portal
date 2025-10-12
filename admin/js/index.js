@@ -1,5 +1,5 @@
 
-const API_BASE = "http://localhost:5000/api"; // Node backend base URL
+const API_BASE = "https://deejoft-portal-backend.onrender.com/api"; // Node backend base URL
 
     // ✅ Sidebar navigation
     window.showSection = function (sectionId) {
