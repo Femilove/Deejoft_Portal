@@ -291,7 +291,7 @@
       if (docSnap.exists() && docSnap.data().role === "student") {
         window.location.href = "Landing.html";
       } else {
-        errorBox.innerText = "Access denied! This login is for students only.";
+        errorBox.innerText = "Access denied!";
         errorBox.style.display = "block";
       }
     } catch (error) {

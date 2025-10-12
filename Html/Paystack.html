@@ -54,6 +54,50 @@
   </div>
 
   <!-- Paystack Inline Script -->
+   <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyBtzBJNdj2EgVbAkB5uKs1VHl-XHklSDsk",
+      authDomain: "deejoft-383a2.firebaseapp.com",
+      projectId: "deejoft-383a2",
+      storageBucket: "deejoft-383a2.firebasestorage.app",
+      messagingSenderId: "1088164312193",
+      appId: "1:1088164312193:web:44277d94e64549dbb98980"
+    };
+
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const auth = getAuth(app);
+
+    // 🔐 Redirect to login if not signed in
+    onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        window.location.href = "student.html";
+      } else {
+        console.log("✅ Logged in as:", user.email);
+      }
+    });
+
+    // 🚪 Logout function
+    document.getElementById("logoutBtn").addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        window.location.href = "student.html";
+      } catch (error) {
+        alert("Error logging out: " + error.message);
+      }
+    });
+
+    // 🔒 Prevent going back after logout
+    window.history.pushState(null, "", window.location.href);
+    window.onpopstate = function () {
+      window.history.pushState(null, "", window.location.href);
+    };
+   </script>
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script>
     document.getElementById('paystackBtn').onclick = function () {

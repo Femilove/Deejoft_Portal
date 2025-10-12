@@ -240,6 +240,8 @@
         <img src="./img/LOGO2 1.png" alt="Deejoft Logo" height="100" width="200">
       </div>
       <form id="studentSignupForm" aria-label="Signup form">
+        <p id="errorMessage" style="color: red; font-size: 0.9rem; margin-top: 0.5rem;"></p>
+
         <input type="text" id="studentUsername" placeholder="Enter your username" required />
         <input type="email" id="studentEmail" placeholder="Enter your email" required />
         <input type="password" id="studentPassword" placeholder="Password" minlength="6" required />
@@ -294,8 +296,26 @@
         alert("Signup successful ✅");
         window.location.href = "Html/Landing.html";
       } catch (error) {
-        alert("Error: " + error.message);
+        const errorElement = document.getElementById("errorMessage");
+        let message = "";
+
+        switch (error.code) {
+          case "auth/email-already-in-use":
+            message = "This email is already registered. Please log in instead.";
+            break;
+          case "auth/invalid-email":
+            message = "Please enter a valid email address.";
+            break;
+          case "auth/weak-password":
+            message = "Password must be at least 6 characters long.";
+            break;
+          default:
+            message = error.message;
+        }
+
+        errorElement.textContent = message;
       }
+
     });
   </script>
 </body>
