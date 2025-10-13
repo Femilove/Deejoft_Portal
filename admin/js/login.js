@@ -15,7 +15,8 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebas
 
     const allowedAdmins = [
       "admin1@deejoft.com",
-      "admin2@deejoft.com"
+      "admin2@deejoft.com",
+      "deejoftgloba@gmail.com"
     ];
 
     document.getElementById("adminLoginForm").addEventListener("submit", async (e) => {
