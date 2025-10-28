@@ -17,7 +17,7 @@ const API_BASE = "https://deejoft-portal-backend.onrender.com/api"; // Node back
 
     // === Auth ===
     // Redirect if not logged in or not admin
-    const allowedAdmins = ["admin1@deejoft.com", "admin2@deejoft.com"];
+    const allowedAdmins = ["admin1@deejoft.com", "admin2@deejoft.com","deejoftgloba@gmail.com"];
     const loggedInUser = localStorage.getItem("adminUser");
 
     if (!loggedInUser || !allowedAdmins.includes(loggedInUser)) {
